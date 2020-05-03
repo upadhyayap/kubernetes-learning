@@ -17,6 +17,12 @@ spec:
     volumeMounts:
     - mountPath: /redis-master
       name: config
+    env:
+      - name: env1
+        valueFrom:
+          configMapKeyRef:
+            name: env-config
+            key: key1
   volumes:
     - name: config
       configMap:
