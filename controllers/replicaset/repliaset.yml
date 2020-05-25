@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-rs # name of the replica set itself
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  # POd config comes under template section  
+  template:
+    metadata:
+      name: nginx-rs-pod
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: nginx-rs-container
+          image: nginx
+          ports:
+            - containerPort: 80
